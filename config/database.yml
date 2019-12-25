@@ -1,6 +1,5 @@
 default: &default
   adapter: mysql2
-  encoding: unicode
   host: <%= ENV['DATABASE_HOST'] || '127.0.0.1' %>
   port: <%= ENV.fetch("DATABASE_PORT") { 3306 } %>
   username: <%= ENV['DATABASE_USERNAME'] || 'root' %>
