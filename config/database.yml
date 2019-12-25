@@ -1,11 +1,12 @@
 default: &default
-  adapter: postgresql
-  host: <%= ENV.fetch("POSTGRES_HOST") { "127.0.0.1" } %>
-  port: <%= ENV.fetch("POSTGRES_PORT") { 5432 } %>
-  encoding: unicode
-  username: postgres
-  password: postgres
+  adapter: mysql2
+  host: <%= ENV['DATABASE_HOST'] || '127.0.0.1' %>
+  port: <%= ENV.fetch("DATABASE_PORT") { 3306 } %>
+  username: <%= ENV['DATABASE_USERNAME'] || 'root' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || 'docker' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  charset: utf8mb4
+  collation: utf8mb4_unicode_ci
 
 development:
   <<: *default
